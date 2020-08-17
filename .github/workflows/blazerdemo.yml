@@ -57,7 +57,7 @@ jobs:
         run: |
           echo 'ls'
           ls
-          echo 'cd webapp'
-          cd webapp
+          echo 'cd wwwroot'
+          cd wwwroot
           echo 'ls'
           ls

@@ -37,3 +37,27 @@ jobs:
       with:
         name: webapp
         path: staging
+
+  deployToStaging:
+    # This job depends on build job
+    needs: [build]
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # download build artifacts
+      - name: Download build artifacts
+        uses: actions/download-artifact@master
+        with:
+          name: webapp
+
+      - name: Debug
+        run: |
+          echo 'ls'
+          ls
+          echo 'cd webapp'
+          cd webapp
+          echo 'ls'
+          ls

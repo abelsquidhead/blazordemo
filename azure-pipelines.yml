@@ -20,7 +20,7 @@ steps:
   
 - script: |
     echo Building blazor app...
-    dotnet build --configuration $(buildConfiguration)
+    dotnet build --configuration $(buildConfiguration) TodoList.csproj
   displayName: 'dotnet build $(buildConfiguration)'
   
 - task: DotNetCoreCLI@2

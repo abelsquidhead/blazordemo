@@ -23,40 +23,15 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-
+    # build blazor app
     - name: Build blazor app
       run: dotnet build --configuration Release
 
+    # publish blazor app to "staging" directory
     - name: Publish app
-      run: |
-        echo 'pwd'
-        pwd
-        echo 'ls'
-        ls
-        echo 'mdkir staging'
-        mkdir staging
-        echo 'ls'
-        ls
-        dotnet publish --configuration Release --output staging
+      run: dotnet publish --configuration Release --output staging
     
-    - name: debug
-      run: |
-          echo 'ls'
-          ls
-          echo 'cd staging'
-          cd staging
-          echo 'ls'
-          ls
-
+    # publish "staging" directory as build artifact
     - name: Publish build artifacts for deployment
       uses: actions/upload-artifact@master
       with:

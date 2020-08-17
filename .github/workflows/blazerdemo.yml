@@ -38,8 +38,15 @@ jobs:
 
     - name: Publish app
       run: |
-        mkdir .\staging
-        dotnet publish --configuration Release --output .\staging
+        echo 'pwd'
+        pwd
+        echo 'ls'
+        ls
+        echo 'mdkir staging'
+        mkdir staging
+        echo 'ls'
+        ls
+        dotnet publish --configuration Release --output staging
     
     - name: debug
       run: |

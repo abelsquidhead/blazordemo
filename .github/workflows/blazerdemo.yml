@@ -54,10 +54,10 @@ jobs:
           name: webapp
 
       - name: Debug
+        env:
+          SERVICE_PRINCIPAL: http://AbelDeployDemoBackupPrincipal
+          SERVICE_PRINCIPAL_TENANT: 72f988bf-86f1-41af-91ab-2d7cd011db47
+
         run: |
-          echo 'ls'
-          ls
-          echo 'cd wwwroot'
-          cd wwwroot
-          echo 'ls'
-          ls
+          az login --service-principal --username ${SERVICE_PRINCIPAL} --password ${{ secrets.SERVICE_PRINCIPAL_SECRET }} --tenant ${SERVICE_PRINCIPAL_TENANT}
+          az storage blob upload -f wwwroot/index.html -c $web -n blazordemostorage

@@ -60,4 +60,4 @@ jobs:
 
         run: |
           az login --service-principal --username ${SERVICE_PRINCIPAL} --password ${{ secrets.SERVICE_PRINCIPAL_SECRET }} --tenant ${SERVICE_PRINCIPAL_TENANT}
-          az storage blob upload -f wwwroot/index.html -c $web -n blazordemostorage
+          az storage blob upload -f wwwroot/index.html -c \$web -n blazordemostorage

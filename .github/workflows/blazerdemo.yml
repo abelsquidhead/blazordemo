@@ -60,4 +60,5 @@ jobs:
 
         run: |
           az login --service-principal --username ${SERVICE_PRINCIPAL} --password ${{ secrets.SERVICE_PRINCIPAL_SECRET }} --tenant ${SERVICE_PRINCIPAL_TENANT}
-          az storage blob upload -f wwwroot/index.html -c \$web -n blazordemostorage --connection-string DefaultEndpointsProtocol=https;AccountName=blazordemostorage;AccountKey=MUn9gAAGLQWnev1rC8dTXl2ReRDl7IAUZXWb26uXlUlJWCTXQ+U2xKTAyBR77pimEus+XzeSMGqK8auFooSrng==;EndpointSuffix=core.windows.net
+          cd wwwroot
+          az storage blob upload-batch --account-name blazordemostorage -s . -d \$web
